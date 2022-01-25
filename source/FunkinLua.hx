@@ -36,9 +36,7 @@ import Type.ValueType;
 import Controls;
 import DialogueBoxPsych;
 
-#if desktop
-import Discord;
-#end
+
 
 using StringTools;
 
@@ -1371,7 +1369,7 @@ class FunkinLua {
 
 		Lua_helper.add_callback(lua, "changePresence", function(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float) {
 			#if desktop
-			DiscordClient.changePresence(details, state, smallImageKey, hasStartTimestamp, endTimestamp);
+			//DiscordClient.changePresence(details, state, smallImageKey, hasStartTimestamp, endTimestamp);
 			#end
 		});
 
@@ -1697,7 +1695,7 @@ class FunkinLua {
 		Lua_helper.add_callback(lua, "clearEffects", function(camera:String) {
 			PlayState.instance.clearShaderFromCamera(camera);
 		});
-		Discord.DiscordClient.addLuaCallbacks(lua);
+		//Discord.DiscordClient.addLuaCallbacks(lua);
 
 		call('onCreate', []);
 		#end

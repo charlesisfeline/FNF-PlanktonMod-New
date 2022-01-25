@@ -28,7 +28,7 @@ import Controls;
 import DialogueBoxPsych;
 
 #if desktop
-import Discord;
+//import Discord;
 #end
 
 using StringTools;
@@ -180,7 +180,7 @@ class EditorLua {
 			}
 		});
 
-		Discord.DiscordClient.addLuaCallbacks(lua);
+		//Discord.DiscordClient.addLuaCallbacks(lua);
 
 		call('onCreate', []);
 		#end
