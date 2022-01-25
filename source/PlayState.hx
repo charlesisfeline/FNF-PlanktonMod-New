@@ -2386,10 +2386,6 @@ class PlayState extends MusicBeatState
 			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - ' + ratingFC;//peeps wanted no integer rating
 		}
 
-		if(botplayTxt.visible) {
-			botplaySine += 180 * elapsed;
-			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
-		}
 
 		if (controls.PAUSE && startedCountdown && canPause)
 		{
