@@ -2,13 +2,13 @@ function onCreate()
 	-- background shit
 	makeLuaSprite('cheat', 'cheat', -1500, -900);
 	setLuaSpriteScrollFactor('cheat', 0, 0);
-	scaleObject('cheat', 2, 2)
+	scaleObject('cheat', 5, 5)
 	addLuaSprite('cheat', false);
 	addGlitchEffect('cheat', 2, 2)
 
-	makeLuaSprite('cheat2', 'cheat2', -1800, -900);
+	makeLuaSprite('cheat2', 'cheat', -1800, -900);
 	setLuaSpriteScrollFactor('cheat2', 0, 0);
-	scaleObject('cheat2', 2, 2)
+	scaleObject('cheat2', 5, 5)
 	addLuaSprite('cheat', false);
 	addGlitchEffect('cheat2', 2, 2)
 

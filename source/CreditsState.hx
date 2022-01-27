@@ -78,6 +78,13 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+			['FNF Vs. Plankton Crew'],
+			['Joerontheblower',		'joer',		        'Main Creator of the Mod'',				                'https://gamejolt.com/@joerontheblower', '444444'],
+			['CharlesCat',			'charles',		    'Main Programmer, Charter and Composer of the Mod',		'https://gamejolt.com/@CharlesCat',		'C30085'],
+			['Eliot',			    'face',			'Co-Creator of the Mod',             	                'https://gamejolt.com/@presidenthecker',	'389A58'],
+			['Kolze',			    'face',			'Additional Composer of the Mod',             	        'https://gamejolt.com/@Kolze',	        '389A58'],
+			['GreenAnimations',		'greenanimations',	'Additional Programmer of the Mod',             	    'https://gamejolt.com/@GreenAnimations',	'389A58'],
+			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',						'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',					'https://twitter.com/river_oaken',		'C30085'],
