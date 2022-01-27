@@ -2471,7 +2471,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
-				case 'supernovae' || 'glitch':
+				case 'supernovae' | 'glitch':
 					PlayState.SONG = Song.loadFromJson("debug", "debug"); // you dun fucked up
 					FlxG.switchState(new PlayState());
 					return;
