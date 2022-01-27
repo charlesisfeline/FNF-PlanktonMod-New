@@ -234,6 +234,7 @@ class PlayState extends MusicBeatState
 	public var scoreTxt:FlxText;
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
+	
 
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
@@ -864,7 +865,7 @@ class PlayState extends MusicBeatState
 
 		var showTime:Bool = (ClientPrefs.timeBarType != 'Disabled');
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
-		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeTxt.setFormat(Paths.font("krabby.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 0;
 		timeTxt.borderSize = 2;
@@ -909,30 +910,6 @@ class PlayState extends MusicBeatState
 			timeTxt.y += 3;
 		}
 
-		var credits:String;
-		switch (SONG.song.toLowerCase())
-		{
-			case 'supernovae':
-				credits = 'Original Song made by ArchWk!';
-			case 'glitch':
-				credits = 'Original Song made by DeadShadow and PixelGH!';
-			case 'rivals':
-				credits = 'Original Song made by DPZ for Vs. Bob and Bosip! CHILDREN?!?!?';
-			case 'debug':
-				credits = 'Screw you! Original Song made by GreenAnimations!';
-			default:
-				credits = '';
-		}
-		var creditsText:Bool = credits != '';
-		if (creditsText)
-		{
-			var creditsWatermark = new FlxText(4, healthBarBG.y + 50, 0, credits, 16);
-			creditsWatermark.setFormat(Paths.font("krabby.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			creditsWatermark.scrollFactor.set();
-			creditsWatermark.borderSize = 1.25;
-			add(creditsWatermark);
-			creditsWatermark.cameras = [camHUD];
-		}
 
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
@@ -1045,14 +1022,59 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER);
+		scoreTxt.setFormat(Paths.font("krabby.ttf"), 20, FlxColor.WHITE, CENTER);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
+		var credits:String;
+		switch (SONG.song.toLowerCase())
+		{
+			case 'supernovae':
+				credits = 'Original Song made by ArchWk!';
+			case 'glitch':
+				credits = 'Original Song made by DeadShadow and PixelGH!';
+			case 'rivals':
+				credits = 'Original Song made by DPZ for Vs. Bob and Bosip! CHILDREN?!?!?';
+			case 'debug':
+				credits = 'Screw you! Original Song made by GreenAnimations!';
+			default:
+				credits = '';
+		}
+		var randomThingy:Int = FlxG.random.int(0, 2);
+		var engineName:String = 'stupid';
+		switch(randomThingy)
+	    {
+			case 0:
+				engineName = 'SpongeBob ';
+			case 1:
+				engineName = 'Plankton ';
+			case 2:
+				engineName = 'Krabs ';
+		}
+		var creditsText:Bool = credits != '';
+		var textYPos:Float = healthBarBG.y + 50;
+		versionTxt = new FlxText(0, textYPos - 24, 0, SONG.song + " - " + CoolUtil.difficultyString() + " | " + engineName + "Engine (PE: v" + MainMenuState.psychEngineVersion + ')', 16);
+		versionTxt.setFormat(Paths.font("krabby.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionTxt.scrollFactor.set();
+		if (creditsText)
+		{
+			textYPos = healthBarBG.y + 30;
+		}
+		if (creditsText)
+		{
+			var creditsWatermark = new FlxText(4, healthBarBG.y + 50, 0, credits, 16);
+			creditsWatermark.setFormat(Paths.font("krabby.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			creditsWatermark.scrollFactor.set();
+			creditsWatermark.borderSize = 1.25;
+			add(creditsWatermark);
+			creditsWatermark.cameras = [camHUD];
+		}
+		add(versionTxt);
+
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayTxt.setFormat(Paths.font("krabby.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
 		botplayTxt.visible = cpuControlled;
