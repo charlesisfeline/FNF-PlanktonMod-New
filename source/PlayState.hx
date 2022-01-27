@@ -909,6 +909,31 @@ class PlayState extends MusicBeatState
 			timeTxt.y += 3;
 		}
 
+		var credits:String;
+		switch (SONG.song.toLowerCase())
+		{
+			case 'supernovae':
+				credits = 'Original Song made by ArchWk!';
+			case 'glitch':
+				credits = 'Original Song made by DeadShadow and PixelGH!';
+			case 'rivals':
+				credits = 'Original Song made by DPZ for Vs. Bob and Bosip! CHILDREN?!?!?';
+			case 'debug':
+				credits = 'Screw you! Original Song made by GreenAnimations!';
+			default:
+				credits = '';
+		}
+		var creditsText:Bool = credits != '';
+		if (creditsText)
+		{
+			var creditsWatermark = new FlxText(4, healthBarBG.y + 50, 0, credits, 16);
+			creditsWatermark.setFormat(Paths.font("krabby.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			creditsWatermark.scrollFactor.set();
+			creditsWatermark.borderSize = 1.25;
+			add(creditsWatermark);
+			creditsWatermark.cameras = [camHUD];
+		}
+
 		var splash:NoteSplash = new NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
