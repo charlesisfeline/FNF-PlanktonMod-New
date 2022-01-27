@@ -167,6 +167,8 @@ class PlayState extends MusicBeatState
 	public var goods:Int = 0;
 	public var bads:Int = 0;
 	public var shits:Int = 0;
+	public var barnacles:Int = 0;
+	public var oks:Int = 0;
 	
 	public static var mania:Int = 0;
 	
@@ -2429,7 +2431,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if(ratingName == '?') {
-			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Accuracy: ' + ratingName;
+			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName;
 		} else {
 			scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' - ' + ratingFC;//peeps wanted no integer rating
 		}
@@ -2467,6 +2469,17 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.anyJustPressed(debugKeysChart) && !endingSong && !inCutscene)
 		{
+			switch (curSong.toLowerCase())
+			{
+				case 'supernovae' || 'glitch':
+					PlayState.SONG = Song.loadFromJson("debug", "debug"); // you dun fucked up
+					FlxG.switchState(new PlayState());
+					return;
+					// FlxG.switchState(new VideoState('assets/videos/fortnite/fortniteballs.webm', new CrasherState()));
+				case 'debug':
+					FlxG.switchState(new YouCheatedSomeoneIsComing());
+					return;
+			}
 			openChartEditor();
 		}
 
@@ -3570,9 +3583,15 @@ class PlayState extends MusicBeatState
 			case "shit": // shit
 				totalNotesHit += 0;
 				shits++;
+			case "barnacles": // barnacles
+				totalNotesHit += 0.2;
+				barnacles++;
 			case "bad": // bad
 				totalNotesHit += 0.5;
 				bads++;
+			case "ok": // ok
+				totalNotesHit += 1;
+				oks++;
 			case "good": // good
 				totalNotesHit += 0.75;
 				goods++;
@@ -4737,8 +4756,8 @@ class PlayState extends MusicBeatState
 			// Rating FC
 			ratingFC = "";
 			if (sicks > 0) ratingFC = "SFC";
-			if (goods > 0) ratingFC = "GFC";
-			if (bads > 0 || shits > 0) ratingFC = "FC";
+			if (goods > 0 || oks > 0) ratingFC = "GFC";
+			if (bads > 0 || shits > 0 || barnacles > 0) ratingFC = "FC";
 			if (songMisses > 0 && songMisses < 10) ratingFC = "SDCB";
 			else if (songMisses >= 10) ratingFC = "Clear";
 		}
