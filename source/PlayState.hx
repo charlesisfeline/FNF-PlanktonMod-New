@@ -4597,9 +4597,10 @@ class PlayState extends MusicBeatState
 
 		var funny:Float = (healthBar.percent * 0.01) + 0.01;
 
-		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * funny)),Std.int(iconP2.height - (25 * funny)));
+		//icon squish funny haha
+		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * (2 - funny))),Std.int(iconP1.height - (25 * (2 - funny))));
 		iconP2.setGraphicSize(Std.int(iconP2.width + (50 * (2 - funny))),Std.int(iconP2.height - (25 * (2 - funny))));
-	
+
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
 
